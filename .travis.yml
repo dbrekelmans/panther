@@ -30,7 +30,7 @@ install:
     else
       composer update --prefer-dist --no-progress --no-suggest --ansi;
     fi
-  - php install chromedriver
+  - php install
 
 script:
   - vendor/bin/simple-phpunit

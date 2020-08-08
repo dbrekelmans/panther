@@ -32,11 +32,14 @@ if (!\class_exists('\ZipArchive')) {
 
 $application = new \Symfony\Component\Console\Application();
 
-$application->add(new \Symfony\Component\Panther\Command\InstallChromeDriverCommand(
-        'chromedriver',
-    new \Symfony\Component\HttpClient\NativeHttpClient(),
-    new \Symfony\Component\Filesystem\Filesystem(),
-    new \ZipArchive()
-));
+$application->add(
+    new \Symfony\Component\Panther\Command\InstallBrowserDriverCommand(
+        'driver',
+        new \Symfony\Component\HttpClient\NativeHttpClient(),
+        new \Symfony\Component\Filesystem\Filesystem(),
+        new \ZipArchive()
+    )
+);
 
+$application->setDefaultCommand('driver', true);
 $application->run();
